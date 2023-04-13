@@ -326,6 +326,7 @@ setuserAmount(amo);
     }
   }
   console.log(typeof(numclaim));
+console.log(numclaim);
 
 const renderAmount = async () =>{
     const provider = await getSignerOrProvider();
@@ -337,43 +338,43 @@ const renderAmount = async () =>{
       const amo = await ethers.utils.formatUnits(tx.lockedAmount)
 
 
-  let value = amo * 1 / 100;
-
+  let value = amo * 10 / 100;
  await setaa1(value);
 
-  let value1 =amo * 2 / 100 ;
+
+  let value1 =amo * 20 / 100 ;
 
  await setaa2(value1);
 
-  let value2 = amo * 3 / 100;
+  let value2 = amo * 30 / 100;
 
  await setaa3(value2);
 
-  let value3 = amo * 4 / 100;
+  let value3 = amo * 40 / 100;
 
  await setaa4(value3);
 
-  let value4 = amo * 5 / 100;
+  let value4 = amo * 50 / 100;
 
  await setaa5(value4);
 
-  let value5 = amo * 6 / 100;
+  let value5 = amo * 60 / 100;
 
  await setaa6(value5);
 
-  let value6 = amo * 7 / 100;
+  let value6 = amo * 70 / 100;
 
  await setaa7(value6);
 
-  let value7 = amo * 8 / 100;
+  let value7 = amo * 80 / 100;
 
  await setaa8(value7);
 
-  let value8 = amo * 9 / 100;
+  let value8 = amo * 90 / 100;
 
  await setaa9(value8);
 
-  let value9 = amo * 10 / 100;
+  let value9 = amo * 100 / 100;
 
  await setaa10(value9);
 

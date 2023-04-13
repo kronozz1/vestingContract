@@ -78,7 +78,7 @@ const [d10 , setd10] = React.useState();
     const web3Provider = new providers.Web3Provider(provider);
     const {chainId} = await web3Provider.getNetwork();
     if(chainId != 80001){
-      window.alert("Change Your Network to BNB Network");
+      window.alert("Change Your Network to Mumbai Network");
       throw new Error("Change Your Network to Mumbai Network");
     }
     if(needSigner ){
@@ -118,6 +118,10 @@ let currentDate = new Date();
                     if (err.message.includes('execution reverted: TokenLock: Not eligible for withdrawal yet')) {
         window.alert('ERC20: Not eligible for withdrawal yet !');
       } 
+                    if (err.message.includes('execution reverted: TokenLock: No locked tokens to withdraw')) {
+        window.alert('TokenLock: No locked tokens to withdraw');
+      } 
+
 
       }
 
@@ -209,10 +213,6 @@ const getClaimAmount = async () =>{
     setd2(dateString2) 
 
             }
-    const dates2 = new Date(formattedValue2 * 1000);
-    const dateString2 = dates2.toLocaleString()
-
-    setd2(dateString2) 
       const tx3 = await myContract.userclaimedDate(address,3);
                   const date3 = ethers.utils.formatUnits(tx3);
       const formattedValue3 = (parseFloat(date3) * 1000000000000000000).toFixed(0);

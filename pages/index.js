@@ -77,9 +77,9 @@ const [d10 , setd10] = React.useState();
     const provider = await ModelRef.current.connect();
     const web3Provider = new providers.Web3Provider(provider);
     const {chainId} = await web3Provider.getNetwork();
-    if(chainId != 80001){
-      window.alert("Change Your Network to Mumbai Network");
-      throw new Error("Change Your Network to Mumbai Network");
+    if(chainId != 97){
+      window.alert("Change Your Network to BNB Network");
+      throw new Error("Change Your Network to BNB Network");
     }
     if(needSigner ){
       const signer = await web3Provider.getSigner();
@@ -127,6 +127,7 @@ let currentDate = new Date();
 
 }
 const getClaimStatus = async () =>{
+  try{
         const provider = await getSignerOrProvider();
     const myContract = new Contract(SwapAddress , Swapabi , provider);
       const signer = await getSignerOrProvider(true);
@@ -151,47 +152,57 @@ const getClaimStatus = async () =>{
   setat9(tx9);
   const tx10 = await myContract.userClaimedStatus(address,10);
   setat10(tx10);
+
+  }catch(err){
+    console.error(err);
+  }
 }
 
 
 const getClaimAmount = async () =>{
+  try{
         const provider = await getSignerOrProvider();
     const myContract = new Contract(SwapAddress , Swapabi , provider);
       const signer = await getSignerOrProvider(true);
       const address = await signer.getAddress();
   const tx = await myContract.userclaimedAmount(address,1);
-  let value = ethers.utils.formatUnits(tx);
+  let value = ethers.utils.formatUnits(tx , 8);
   seta1(value);
     const tx2 = await myContract.userclaimedAmount(address,2);
-  let value1 = ethers.utils.formatUnits(tx2);
+  let value1 = ethers.utils.formatUnits(tx2,8);
   seta2(value1);
   const tx3 = await myContract.userclaimedAmount(address,3);
-  let value2 = ethers.utils.formatUnits(tx3);
+  let value2 = ethers.utils.formatUnits(tx3,8);
   seta3(value2);
   const tx4 = await myContract.userclaimedAmount(address,4);
-  let value3 = ethers.utils.formatUnits(tx4);
+  let value3 = ethers.utils.formatUnits(tx4,8);
   seta4(value3);
   const tx5 = await myContract.userclaimedAmount(address,5);
-  let value4 = ethers.utils.formatUnits(tx5);
+  let value4 = ethers.utils.formatUnits(tx5,8);
   seta5(value4);
   const tx6 = await myContract.userclaimedAmount(address,6);
-  let value5 = ethers.utils.formatUnits(tx6);
+  let value5 = ethers.utils.formatUnits(tx6,8);
   seta6(value5);
   const tx7 = await myContract.userclaimedAmount(address,7);
-  let value6 = ethers.utils.formatUnits(tx7);
+  let value6 = ethers.utils.formatUnits(tx7,8);
   seta7(value6);
   const tx8 = await myContract.userclaimedAmount(address,8);
-  let value7 = ethers.utils.formatUnits(tx8);
+  let value7 = ethers.utils.formatUnits(tx8,8);
   seta8(value7);
   const tx9 = await myContract.userclaimedAmount(address,9);
-  let value8 = ethers.utils.formatUnits(tx9);
+  let value8 = ethers.utils.formatUnits(tx9,8);
   seta9(value8);
   const tx10 = await myContract.userclaimedAmount(address,10);
-  let value9 = ethers.utils.formatUnits(tx10);
+  let value9 = ethers.utils.formatUnits(tx10,8);
   seta10(value9);
+
+  }catch(err){
+    console.error(err);
+  }
 }
   const getClaimDate = async() =>{
-        const provider = await getSignerOrProvider();
+    try{
+              const provider = await getSignerOrProvider();
     const myContract = new Contract(SwapAddress , Swapabi , provider);
       const signer = await getSignerOrProvider(true);
       const address = await signer.getAddress();
@@ -298,6 +309,10 @@ const getClaimAmount = async () =>{
     setd10(dateString10) 
     }
 
+
+    }catch(err){
+      console.error(err);
+    }
   }
   console.log(d4);
   const getBlanceTokenAmanDevToken = async() =>{
@@ -312,8 +327,6 @@ const getClaimAmount = async () =>{
       const formattedValue = (parseFloat(date) * 1000000000000000000).toFixed(0);
       const numclaims1 = ethers.utils.formatUnits(tx.periodsWithdrawn);
             const numclaims = (parseFloat(numclaims1) * 1000000000000000000).toFixed(0);
-
-
 setnumclaim(numclaims);
       setnumclaim0(numclaims + 1);
 setuserAmount(amo);
@@ -329,6 +342,7 @@ setuserAmount(amo);
 console.log(numclaim);
 
 const renderAmount = async () =>{
+  try{
     const provider = await getSignerOrProvider();
     const myContract = new Contract(SwapAddress , Swapabi , provider);
       const signer = await getSignerOrProvider(true);
@@ -377,6 +391,10 @@ const renderAmount = async () =>{
   let value9 = amo * 100 / 100;
 
  await setaa10(value9);
+
+  }catch(err){
+    console.error(err);
+  }
 
 
 }
@@ -491,21 +509,6 @@ renderLinksTenTimes();
     <title>Vesting Contract Swap</title>
     </Head>
 	  <div class="area" >
-            <ul class="circles">
-                    <li><img src="envo.png"/></li>
-                    <li><img src="envo.png"/></li>
-                    <li><img src="envo.png"/></li>
-                    <li><img src="envo.png"/></li>
-                    <li><img src="envo.png"/></li>
-                    <li><img src="envo.png"/></li>
-                    <li><img src="envo.png"/></li>
-                    <li><img src="envo.png"/></li>
-                    <li><img src="envo.png"/></li>
-                   
-            </ul>
-			<div id='stars'></div>
-<div id='stars2'></div>
-<div id='stars3'></div>
 </div>
 
     <header class="text-gray-600 body-font ">
